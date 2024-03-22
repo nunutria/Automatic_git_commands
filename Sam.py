@@ -2,8 +2,9 @@ import os
 
 # Nombre del archivo
 archivo_txt = "mi_archivo.txt"
+
 # ruta base
-ruta_base = "C:\\Users\\SamUrbina\\Desktop\\Python"
+ruta_base = os.getcwd()
 
 # Ruta del archivo (opcional)
 ruta_archivo = os.path.join(ruta_base, archivo_txt)
@@ -17,7 +18,6 @@ else:
     # Crea el archivo
     with open(ruta_archivo, "w") as archivo:
         archivo.write("Contenido inicial del archivo")
-
 
     print("El archivo", archivo_txt, "ha sido creado.")
 
