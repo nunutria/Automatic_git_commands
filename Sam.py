@@ -2,9 +2,11 @@ import os
 
 # Nombre del archivo
 archivo_txt = "mi_archivo.txt"
+# ruta base
+ruta_base = "C:\\Users\\SamUrbina\\Desktop\\Python"
 
 # Ruta del archivo (opcional)
-ruta_archivo = os.path.join("C:", "Users", "SamUrbina", "Desktop", "Python", archivo_txt)
+ruta_archivo = os.path.join(ruta_base, archivo_txt)
 
 # Verifica si el archivo existe
 if os.path.exists(ruta_archivo):
