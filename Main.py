@@ -1,6 +1,15 @@
 import os
+import subprocess
 from io import open
 from datetime import datetime
+from plyer import notification
+
+notification.notify(
+    title='Automatic Contributions ',
+    message='Starting Process...',
+    app_icon= 'nunutria.ico',
+    timeout= 5)
+
 # Definimos nombres de archivos
 ARCHIVO_TXT = "registroGitHub.txt"
 ARCHIVO_BIN = "Contador.bin"
@@ -8,6 +17,7 @@ ARCHIVO_BIN = "Contador.bin"
 #Definir variables
 RUTA_BASE = os.getcwd()
 TIME = datetime.now()
+
 
 # Funciones para manejo de archivos
 def crear_archivo_txt(ruta, contenido):
@@ -44,6 +54,19 @@ valor_counter = leer_valor_counter(os.path.join(RUTA_BASE, ARCHIVO_BIN))
 nuevo_valor = valor_counter + 1
 actualizar_valor_counter(os.path.join(RUTA_BASE, ARCHIVO_BIN), nuevo_valor)
 
-# Mostrar información
-print("El script se ha ejecutado", nuevo_valor, "veces.")
-print("El script se ha ejecutado correctamente.")
+MENSAJE_COMMIT = 'Update '+ ARCHIVO_TXT + ' en fecha ' + str(TIME)
+
+def realizar_commit(MENSAJE_COMMIT):
+  subprocess.run(["git", "add", ARCHIVO_TXT, ARCHIVO_BIN])
+  subprocess.run(["git", "commit", "-m", MENSAJE_COMMIT])
+  subprocess.run(["git", "push", "origin", "master"])
+
+
+realizar_commit(MENSAJE_COMMIT)
+
+messageEnded = 'finalized process, contributions '+ str(nuevo_valor)+ ' in total'
+notification.notify(
+    title='Automatic Contributions ',
+    app_icon= 'nunutria.ico',
+    message=messageEnded)
+
