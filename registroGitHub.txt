@@ -1,0 +1,2 @@
+Contenido inicial del archivo
+Commit hecho en la fecha2024-03-23 19:09:13.487950
