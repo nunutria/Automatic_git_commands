@@ -54,13 +54,12 @@ valor_counter = leer_valor_counter(os.path.join(RUTA_BASE, ARCHIVO_BIN))
 nuevo_valor = valor_counter + 1
 actualizar_valor_counter(os.path.join(RUTA_BASE, ARCHIVO_BIN), nuevo_valor)
 
-MENSAJE_COMMIT = 'Update '+ ARCHIVO_TXT + ' en fecha ' + str(TIME)
-
 def realizar_commit(MENSAJE_COMMIT):
-  subprocess.run(["git", "add", ARCHIVO_TXT, ARCHIVO_BIN])
+  subprocess.run(["git", "add", ARCHIVO_TXT])
   subprocess.run(["git", "commit", "-m", MENSAJE_COMMIT])
-  subprocess.run(["git", "push", "origin", "master"])
+  subprocess.run(["git", "push", "origin", "main"])
 
+MENSAJE_COMMIT = 'Update '+ ARCHIVO_TXT + ' en fecha ' + str(TIME)
 
 realizar_commit(MENSAJE_COMMIT)
 
