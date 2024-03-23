@@ -1,12 +1,13 @@
 import os
 from io import open
-
+from datetime import datetime
 # Definimos nombres de archivos
-ARCHIVO_TXT = "registroCommit.txt"
-ARCHIVO_BIN = "counter.bin"
+ARCHIVO_TXT = "registroGitHub.txt"
+ARCHIVO_BIN = "Contador.bin"
 
-# Ruta base del archivo
+#Definir variables
 RUTA_BASE = os.getcwd()
+TIME = datetime.now()
 
 # Funciones para manejo de archivos
 def crear_archivo_txt(ruta, contenido):
@@ -36,7 +37,7 @@ if not os.path.isfile(os.path.join(RUTA_BASE, ARCHIVO_BIN)):
 
 # Agregar contenido al archivo TXT
 with open(os.path.join(RUTA_BASE, ARCHIVO_TXT), "a") as archivo:
-    archivo.write("\nNueva línea de contenido")
+    archivo.write("\nCommit hecho en la fecha"+ str(TIME))
 
 # Lectura y actualización del valor "counter"
 valor_counter = leer_valor_counter(os.path.join(RUTA_BASE, ARCHIVO_BIN))
